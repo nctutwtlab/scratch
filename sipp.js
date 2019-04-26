@@ -167,8 +167,8 @@
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-            ['R', 'Stored count', 'stored_step'], 
-            ['R', 'Current count', 'current_step'],
+            ['R', 'StoredCount', 'stored_step'], 
+            ['R', 'CurrentCount', 'current_step'],
 			['R', 'Ax', 'ax'],
 			['R', 'Ay', 'ay'],
 			['R', 'Az', 'az']
