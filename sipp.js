@@ -88,12 +88,90 @@
             },
         });
     };
+	
+	ext.ax = function (callback) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/services/pedometer/data/ax',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: (data) => {
+                console.log(data);
+                
+                var obj = JSON.parse(data);
+                if (localStored == 0) {
+                    localStored = obj.value;
+                }
+                var localCurrent = obj.value - localStored;
+                localStored = obj.value;
+                callback(localCurrent);
+            },
+            err: (textStatus, errorThrown) => {
+                console.log(textStatus);
+                console.log(errorThrown);
+                callback(0);
+            },
+        });
+    };
+	
+	ext.ay = function (callback) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/services/pedometer/data/ay',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: (data) => {
+                console.log(data);
+                
+                var obj = JSON.parse(data);
+                if (localStored == 0) {
+                    localStored = obj.value;
+                }
+                var localCurrent = obj.value - localStored;
+                localStored = obj.value;
+                callback(localCurrent);
+            },
+            err: (textStatus, errorThrown) => {
+                console.log(textStatus);
+                console.log(errorThrown);
+                callback(0);
+            },
+        });
+    };
+	
+	ext.az = function (callback) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/services/pedometer/data/az',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: (data) => {
+                console.log(data);
+                
+                var obj = JSON.parse(data);
+                if (localStored == 0) {
+                    localStored = obj.value;
+                }
+                var localCurrent = obj.value - localStored;
+                localStored = obj.value;
+                callback(localCurrent);
+            },
+            err: (textStatus, errorThrown) => {
+                console.log(textStatus);
+                console.log(errorThrown);
+                callback(0);
+            },
+        });
+    };
 
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
             ['R', 'Stored count', 'stored_step'], 
-            ['R', 'Current count', 'current_step']
+            ['R', 'Current count', 'current_step'],
+			['R', 'Ax', 'ax'],
+			['R', 'Ay', 'ay'],
+			['R', 'Az', 'az']
         ]
     };
 
