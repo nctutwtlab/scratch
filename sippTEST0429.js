@@ -92,7 +92,8 @@
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-            ['R', '觸發', 'stored_step'], 
+            ['R', '累計步數', 'stored_step'], 
+            ['R', '觸發', 'current_step'], 
             ['R', 'AccX', 'accx'], 
             ['R', 'AccY', 'accy'], 
             ['R', 'AccZ', 'accz'],
