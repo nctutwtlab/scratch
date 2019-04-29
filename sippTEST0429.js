@@ -97,9 +97,6 @@
             ['R', 'AccX', 'accx'], 
             ['R', 'AccY', 'accy'], 
             ['R', 'AccZ', 'accz'],
-            ['R', 'GyroX', 'gyrox'], 
-            ['R', 'GyroY', 'gyroy'], 
-            ['R', 'GyroZ', 'gyroz']
         ]
     };
 
