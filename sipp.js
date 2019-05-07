@@ -67,7 +67,7 @@
     ext.current_step = function (callback) {
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:8080/services/pedometer/data/step',
+            url: 'http://localhost:8080/services/pedometer/data/currentStep',
             dataType: 'jsonp',
             jsonp: 'callback',
             success: (data) => {
@@ -77,7 +77,7 @@
                 if (localStored == 0) {
                     localStored = obj.value;
                 }
-                var localCurrent = obj.value - localStored;
+                var localCurrent = obj.value;
                 localStored = obj.value;
                 callback(localCurrent);
             },
@@ -102,7 +102,7 @@
                 if (localStored == 0) {
                     localStored = obj.value;
                 }
-                var localCurrent = obj.value - localStored;
+                var localCurrent = obj.value;
                 localStored = obj.value;
                 callback(localCurrent);
             },
@@ -127,7 +127,7 @@
                 if (localStored == 0) {
                     localStored = obj.value;
                 }
-                var localCurrent = obj.value - localStored;
+                var localCurrent = obj.value;
                 localStored = obj.value;
                 callback(localCurrent);
             },
@@ -152,7 +152,7 @@
                 if (localStored == 0) {
                     localStored = obj.value;
                 }
-                var localCurrent = obj.value - localStored;
+                var localCurrent = obj.value;
                 localStored = obj.value;
                 callback(localCurrent);
             },
