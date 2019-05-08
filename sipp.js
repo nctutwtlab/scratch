@@ -75,8 +75,13 @@
             success: (data) => {
                 console.log(data);
                 
-                var obj = JSON.parse(data);
-                var localCurrent = obj.value;
+                
+				var obj = JSON.parse(data);
+                if (localStored == 0) {
+                    localStored = obj.value;
+                }
+                var localCurrent = obj.value - localStored;
+                localStored = obj.value;
                 callback(localCurrent);
             },
             err: (textStatus, errorThrown) => {
