@@ -56,7 +56,7 @@
                 console.log(data);
                 var obj = JSON.parse(data);
                 localStored = obj.value;
-                callback(localStored);
+                callback(0);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
