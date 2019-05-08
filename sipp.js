@@ -55,7 +55,7 @@
                 console.log(data);
                 var obj = JSON.parse(data);
                 localStored = obj.value;
-                callback(0);
+                callback(localStored);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
@@ -100,7 +100,7 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                var ax = obj.value;
+                ax = obj.value;
                 callback(ax);
             },
             err: (textStatus, errorThrown) => {
@@ -121,7 +121,7 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                var ay = obj.value;
+                ay = obj.value;
                 callback(0);
             },
             err: (textStatus, errorThrown) => {
@@ -142,7 +142,7 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                var az = obj.value;
+                az = obj.value;
                 callback(az);
             },
             err: (textStatus, errorThrown) => {
