@@ -30,9 +30,9 @@
             success: (data) => {
                 var obj = JSON.parse(data);
                 if (obj.status === "READY") {
-                    status = 2;
-                } else {
                     status = 1;
+                } else {
+                    status = 2;
                 }
                 msg = obj.status;
             },
