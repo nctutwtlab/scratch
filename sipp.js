@@ -7,7 +7,10 @@
     var status = 1;
     var localStored = 0;
     var localCurrent = 0;
-
+	var ax = 0;
+	var ay = 0;
+	var az = 0;
+	
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {
         database.goOffline();
@@ -94,12 +97,8 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                if (localStored == 0) {
-                    localStored = obj.value;
-                }
-                var localCurrent = obj.value - localStored;
-                localStored = obj.value;
-                callback(localCurrent);
+                ax = obj.value;
+                callback(ax);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
@@ -119,12 +118,8 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                if (localStored == 0) {
-                    localStored = obj.value;
-                }
-                var localCurrent = obj.value - localStored;
-                localStored = obj.value;
-                callback(localCurrent);
+                ay = obj.value;
+                callback(ay);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
@@ -144,12 +139,8 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                if (localStored == 0) {
-                    localStored = obj.value;
-                }
-                var localCurrent = obj.value - localStored;
-                localStored = obj.value;
-                callback(localCurrent);
+                az = obj.value;
+                callback(az);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
