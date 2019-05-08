@@ -66,18 +66,14 @@
     ext.current_step = function (callback) {
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:8080/services/pedometer/data/step',
+            url: 'http://localhost:8080/services/pedometer/data/currentStep',
             dataType: 'jsonp',
             jsonp: 'callback',
             success: (data) => {
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                if (localStored == 0) {
-                    localStored = obj.value;
-                }
-                var localCurrent = obj.value - localStored;
-                localStored = obj.value;
+                var localCurrent = obj.value;
                 callback(localCurrent);
             },
             err: (textStatus, errorThrown) => {
