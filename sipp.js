@@ -7,9 +7,7 @@
     var status = 1;
     var localStored = 0;
     var localCurrent = 0;
-    var ax = 0;
-    var ay = 0;
-    var az = 0;
+
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {
         database.goOffline();
@@ -68,7 +66,7 @@
     ext.current_step = function (callback) {
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:8080/services/pedometer/data/currentStep',
+            url: 'http://localhost:8080/services/pedometer/data/step',
             dataType: 'jsonp',
             jsonp: 'callback',
             success: (data) => {
@@ -78,7 +76,7 @@
                 if (localStored == 0) {
                     localStored = obj.value;
                 }
-                var localCurrent = obj.value;
+                var localCurrent = obj.value - localStored;
                 localStored = obj.value;
                 callback(localCurrent);
             },
@@ -100,8 +98,12 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                ax = obj.value;
-                callback(ax);
+                if (localStored == 0) {
+                    localStored = obj.value;
+                }
+                var localCurrent = obj.value - localStored;
+                localStored = obj.value;
+                callback(localCurrent);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
@@ -121,8 +123,12 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                ay = obj.value;
-                callback(0);
+                if (localStored == 0) {
+                    localStored = obj.value;
+                }
+                var localCurrent = obj.value - localStored;
+                localStored = obj.value;
+                callback(localCurrent);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
@@ -142,8 +148,12 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                az = obj.value;
-                callback(az);
+                if (localStored == 0) {
+                    localStored = obj.value;
+                }
+                var localCurrent = obj.value - localStored;
+                localStored = obj.value;
+                callback(localCurrent);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
