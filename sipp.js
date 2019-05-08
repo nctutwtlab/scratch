@@ -1,4 +1,3 @@
-
 (function(ext) {
     var current_step = 0;
     var init_step = 0;
@@ -8,7 +7,9 @@
     var status = 1;
     var localStored = 0;
     var localCurrent = 0;
-
+    var ax = 0;
+    var ay = 0;
+    var az = 0;
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {
         database.goOffline();
@@ -54,7 +55,7 @@
                 console.log(data);
                 var obj = JSON.parse(data);
                 localStored = obj.value;
-                callback(localStored);
+                callback(0);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
@@ -67,7 +68,7 @@
     ext.current_step = function (callback) {
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:8080/services/pedometer/data/step',
+            url: 'http://localhost:8080/services/pedometer/data/currentStep',
             dataType: 'jsonp',
             jsonp: 'callback',
             success: (data) => {
@@ -77,7 +78,7 @@
                 if (localStored == 0) {
                     localStored = obj.value;
                 }
-                var localCurrent = obj.value - localStored;
+                var localCurrent = obj.value;
                 localStored = obj.value;
                 callback(localCurrent);
             },
@@ -99,12 +100,8 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                if (localStored == 0) {
-                    localStored = obj.value;
-                }
-                var localCurrent = obj.value - localStored;
-                localStored = obj.value;
-                callback(localCurrent);
+                var ax = obj.value;
+                callback(ax);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
@@ -124,12 +121,8 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                if (localStored == 0) {
-                    localStored = obj.value;
-                }
-                var localCurrent = obj.value - localStored;
-                localStored = obj.value;
-                callback(localCurrent);
+                var ay = obj.value;
+                callback(0);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
@@ -149,12 +142,8 @@
                 console.log(data);
                 
                 var obj = JSON.parse(data);
-                if (localStored == 0) {
-                    localStored = obj.value;
-                }
-                var localCurrent = obj.value - localStored;
-                localStored = obj.value;
-                callback(localCurrent);
+                var az = obj.value;
+                callback(az);
             },
             err: (textStatus, errorThrown) => {
                 console.log(textStatus);
