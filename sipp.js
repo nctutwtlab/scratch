@@ -11,6 +11,10 @@
     var ax = 0;
     var ay = 0;
     var az = 0;
+    var gx = 0;
+    var gy = 0;
+    var gz = 0;
+    var trigger = 0;
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {
         database.goOffline();
@@ -153,6 +157,92 @@
             },
         });
     };
+	
+	ext.gx = function (callback) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/services/pedometer/data/gx',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: (data) => {
+                console.log(data);
+                
+                var obj = JSON.parse(data);
+                var gx = obj.value;
+                callback(gx);
+            },
+            err: (textStatus, errorThrown) => {
+                console.log(textStatus);
+                console.log(errorThrown);
+                callback(0);
+            },
+        });
+    };
+
+	ext.gy = function (callback) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/services/pedometer/data/gy',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: (data) => {
+                console.log(data);
+                
+                var obj = JSON.parse(data);
+                var gy = obj.value;
+                callback(gy);
+            },
+            err: (textStatus, errorThrown) => {
+                console.log(textStatus);
+                console.log(errorThrown);
+                callback(0);
+            },
+        });
+    };
+	
+	ext.gz = function (callback) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/services/pedometer/data/gz',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: (data) => {
+                console.log(data);
+                
+                var obj = JSON.parse(data);
+                var gz = obj.value;
+                callback(gz);
+            },
+            err: (textStatus, errorThrown) => {
+                console.log(textStatus);
+                console.log(errorThrown);
+                callback(0);
+            },
+        });
+    };
+	
+	ext.trigger = function (callback) {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/services/pedometer/data/trigger',
+            dataType: 'jsonp',
+            jsonp: 'callback',
+            success: (data) => {
+                console.log(data);
+                
+                var obj = JSON.parse(data);
+                var trigger = obj.value;
+                callback(trigger);
+            },
+            err: (textStatus, errorThrown) => {
+                console.log(textStatus);
+                console.log(errorThrown);
+                callback(0);
+            },
+        });
+    };
+
+
 
     // Block and block menu descriptions
     var descriptor = {
@@ -161,7 +251,11 @@
             ['R', 'CurrentCount', 'current_step'],
 			['R', 'Ax', 'ax'],
 			['R', 'Ay', 'ay'],
-			['R', 'Az', 'az']
+			['R', 'Az', 'az'],
+			['R', 'Gx', 'gx'],
+			['R', 'Gy', 'gy'],
+			['R', 'Gz', 'gz'],
+		        ['R', 'Trigger', 'trigger']
         ]
     };
 
