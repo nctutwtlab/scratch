@@ -261,21 +261,4 @@
     // Register the extension
     ScratchExtensions.register('SippSensor', descriptor, ext);
 })({});
-    // Block and block menu descriptions
-    var descriptor = {
-        blocks: [
-            ['R', 'StoredCount', 'stored_step'], 
-            ['R', 'CurrentCount', 'current_step'],
-			['R', 'Ax', 'ax'],
-			['R', 'Ay', 'ay'],
-			['R', 'Az', 'az'],
-			['R', 'Gx', 'gx'],
-			['R', 'Gy', 'gy'],
-			['R', 'Gz', 'gz'],
-		        ['R', 'Trigger', 'trigger']
-        ]
-    };
-
-    // Register the extension
-    ScratchExtensions.register('SippSensor', descriptor, ext);
-})({});
+   
