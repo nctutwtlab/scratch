@@ -58,7 +58,7 @@
             success: (data) => {
                 console.log(data);
                 var obj = JSON.parse(data);
-                localStored = obj.value;
+		var localStored = obj.value;
                 callback(localStored);
             },
             err: (textStatus, errorThrown) => {
@@ -80,7 +80,6 @@
                 
                 var obj = JSON.parse(data);
                 var localCurrent = obj.value;
-		localCurrent = obj.value;
                 callback(localCurrent);
             },
             err: (textStatus, errorThrown) => {
